@@ -27,7 +27,7 @@ pipeline{
         //  sh 'cd java-maven-sonar-argocd-helm-k8s/spring-boot-app && mvn sonar:sonar -Dsonar.login=$SONAR_AUTH_TOKEN -Dsonar.host.url=${SONAR_URL}'
       }
     }
-    stage{
+    stage('Build and Push Docker Image'){
       environment{
         DOCKER_IMAGE = "coitlearningdemo/ultimate-cicd-pipeline:v1"
         REGISTRY_CREDENTIALS = credentials('docker-cred')
