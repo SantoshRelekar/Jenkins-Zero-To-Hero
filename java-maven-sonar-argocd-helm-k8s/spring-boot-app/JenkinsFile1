@@ -29,7 +29,7 @@ pipeline{
       }
       steps{
         script{
-                docker.withRegistry('https://hub.docker.com/', 'docker-cred') {
+                docker.withRegistry('', 'docker-cred') {
                 def dockerImage = docker.build("${DOCKER_IMAGE}")
                 /* Push the container to the custom Registry */
                 dockerImage.push()
