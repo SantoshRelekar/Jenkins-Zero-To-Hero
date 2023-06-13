@@ -29,9 +29,11 @@ pipeline{
       }
       steps{
         script{
-            sh 'cd java-maven-sonar-argocd-helm-k8s/spring-boot-app && docker build -f Dockerfile -t ${DOCKER_IMAGE} .'
-            docker.withRegistry( '', REGISTRY_CREDENTIALS ) {
-            dockerImage.push()
+                docker.withRegistry('https://hub.docker.com/', 'docker-cred') {
+                def dockerImage = docker.build("${DOCKER_IMAGE}")
+                /* Push the container to the custom Registry */
+                dockerImage.push()
+                }            
             }
         }
       }
