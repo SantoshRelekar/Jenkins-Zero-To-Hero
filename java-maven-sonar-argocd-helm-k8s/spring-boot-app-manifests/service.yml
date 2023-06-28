@@ -6,8 +6,8 @@ spec:
   type: LoadBalancer
   ports:
   - name: http
-    port: 8083
-    targetPort: 8083
+    port: 8088
+    targetPort: 8088
     protocol: TCP
   selector:
     app: spring-boot-app
